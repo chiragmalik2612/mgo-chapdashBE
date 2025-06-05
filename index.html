@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chapter Performance Dashboard API Interface</title>
+    <script defer src="script.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="p-4 bg-light">
+    <div class="container">
+      <h2 class="mb-4">Chapter Performance Dashboard API Interface</h2>
+
+      <!-- GET Form -->
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          🔍 Fetch Chapters (Note: keep all the fields empty to GET all the
+          chapters)
+        </div>
+        <div class="card-body">
+          <form id="get-form">
+            <div class="row g-3">
+              <div class="col-12 col-md-2">
+                <label for="class" class="form-label">Class</label>
+                <select id="class" class="form-select" name="class">
+                  <option value="">All Classes</option>
+                  <option value="11">Class 11</option>
+                  <option value="12">Class 12</option>
+                </select>
+              </div>
+              <div class="col-12 col-md-2">
+                <label for="subject" class="form-label">Subject</label>
+                <select id="subject" class="form-select" name="subject">
+                  <option value="">All Subjects</option>
+                  <option value="Physics">Physics</option>
+                  <option value="Chemistry">Chemistry</option>
+                  <option value="Mathematics">Mathematics</option>
+                </select>
+              </div>
+              <div class="col-12 col-md-2">
+                <label for="unit" class="form-label">Unit</label>
+                <input
+                  type="text"
+                  id="unit"
+                  name="unit"
+                  class="form-control"
+                  placeholder="Unit (e.g. 1)"
+                />
+              </div>
+              <div class="col-12 col-md-2">
+                <label for="status" class="form-label">Status</label>
+                <select id="status" name="status" class="form-select">
+                  <option value="">Any</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Not Started">Not Started</option>
+                  <option value="In Progress">In Progress</option>
+                </select>
+              </div>
+              <div
+                class="col-12 col-md-2 d-flex flex-column justify-content-end"
+              >
+                <div class="form-check mt-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="weakChapters"
+                    name="weakChapters"
+                    value="true"
+                  />
+                  <label class="form-check-label" for="weakChapters">
+                    Weak Chapters only
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-md-1">
+                <label for="page" class="form-label">Page</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="page"
+                  placeholder="1"
+                  min="1"
+                />
+              </div>
+              <div class="col-12 col-md-1">
+                <label for="limit" class="form-label">Limit</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="limit"
+                  placeholder="10"
+                  min="1"
+                />
+              </div>
+              <div class="col-12 col-md-12 d-flex justify-content-end">
+                <button class="btn btn-primary mt-3" type="submit">
+                  Get Chapters
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- GET Chapter by ID Form -->
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">🔎 Get Chapter by ID</div>
+        <div class="card-body">
+          <form id="get-id-form" class="row g-3 align-items-end">
+            <div class="col-12 col-md-10">
+              <label for="chapter-id" class="form-label">Chapter ID</label>
+              <input
+                type="text"
+                id="chapter-id"
+                name="chapterId"
+                class="form-control"
+                placeholder="Enter Chapter ID"
+                required
+              />
+            </div>
+            <div class="col-12 col-md-2">
+              <button class="btn btn-info w-100" type="submit">
+                Fetch Chapter
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- POST Form -->
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">📤 Upload Chapters (Admin only)</div>
+        <div class="card-body">
+          <form id="post-form">
+            <div class="mb-3">
+              <label class="form-label">Upload JSON File</label>
+              <input type="file" name="file" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Admin API Key</label>
+              <input
+                type="text"
+                name="apiKey"
+                class="form-control"
+                placeholder="Enter admin API key"
+                required
+              />
+            </div>
+            <button class="btn btn-success" type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Output -->
+      <div class="card shadow-sm">
+        <div class="card-header">📄 API Response</div>
+        <div class="card-body">
+          <pre
+            id="response"
+            class="p-3 rounded bg-white border text-wrap"
+            style="max-height: 400px; overflow-y: auto"
+          ></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
