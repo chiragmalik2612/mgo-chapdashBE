@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://mgo-chapdashbe-1.onrender.com/", // allow requests from your frontend
+    origin: "https://mgo-chapdashbe-1.onrender.com", // allow requests from your frontend
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "x-api-key"],
   })
