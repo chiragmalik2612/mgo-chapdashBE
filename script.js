@@ -1,4 +1,4 @@
-const API_BASE = "http://13.48.147.18/api/v1/chapters/";
+const API_BASE = "https://mgo-chapdashbe.onrender.com/api/v1/chapters/";
 
 const getForm = document.getElementById("get-form");
 const getIdForm = document.getElementById("get-id-form");
