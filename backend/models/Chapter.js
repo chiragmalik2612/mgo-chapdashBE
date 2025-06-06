@@ -1,20 +1,42 @@
 const mongoose = require('mongoose');
 
 const ChapterSchema = new mongoose.Schema({
-  subject: String,
-  chapter: String,
-  class: String,
-  unit: String,
+  subject: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  chapter: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  class: {
+    type: String,
+    required: true
+  },
+  unit: {
+    type: String,
+    required: true
+  },
   yearWiseQuestionCount: {
     type: Map,
-    of: Number
+    of: Number,
+    default: {}
   },
-  questionSolved: Number,
+  questionSolved: {
+    type: Number,
+    default: 0
+  },
   status: {
     type: String,
-    enum: ['Completed', 'Not Started']
+    enum: ['Completed', 'Not Started'],
+    required: true
   },
-  isWeakChapter: Boolean
+  isWeakChapter: {
+    type: Boolean,
+    default: false
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Chapter', ChapterSchema);
