@@ -17,6 +17,15 @@ app.use(
 
 app.use("/api/v1/chapters", chapterRoutes);
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Welcome to the Chapters API!",
+    info: "This backend is deployed on Render.",
+    usage: "Use the endpoint below to access chapter data.",
+    endpoint: "https://mgo-chapdashbe.onrender.com/api/v1/chapters/",
+  });
+});
+
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
